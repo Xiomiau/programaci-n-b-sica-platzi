@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#pet {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+}
+
+label {
+    width: fit-content;
+    cursor: pointer;
+}
+
+#boton-mascota {
+    width: fit-content;
+    border: none;
+    width: 20%;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: rgb(240, 81, 174);
+    font-weight: bold;
+}
+
+#boton-mascota:hover {
+    background-color: rgba(246, 168, 168, 0.622);
+}
+
