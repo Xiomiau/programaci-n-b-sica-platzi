@@ -1,3 +1,23 @@
+let ataqueJugador
+let ataqueContrario
+
+function iniciarJuego() {
+    let botonMascotaJugador = document.querySelector('#boton-mascota');
+    botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
+
+    let botonFuego=document.querySelector('#boton-fuego');
+    botonFuego.addEventListener('click', ataqueFuego)
+
+    let botonAgua=document.querySelector('#boton-agua');
+    botonAgua.addEventListener('click', ataqueAgua)
+
+    let botonTierra=document.querySelector('#boton-tierra');
+    botonTierra.addEventListener('click', ataqueTierra)
+
+}
+function aleatorio(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
 function seleccionarMascotaJugador() {
 
     // apuntadores de las mascotas
@@ -40,7 +60,7 @@ function seleccionarMascotaJugador() {
 function seleccionarMascotaEnemigo() {
     let ataqueAleatorio = aleatorio(1,6);
     let spanMascotaEnemigo = document.querySelector('#mascota-enemigo')
-
+    
     if(ataqueAleatorio==1) {
         spanMascotaEnemigo.innerHTML="Hipodogue"
     } else if (ataqueAleatorio==2){
@@ -56,13 +76,72 @@ function seleccionarMascotaEnemigo() {
     }
 }
 
+function ataqueFuego (){
+    ataqueJugador = 'FUEGO 🔥';
+    ataqueEnemigo()
+    //alert("Elegiste ataque " + ataqueJugador);
+}
 
-function aleatorio(min,max){
-    return Math.floor(Math.random()*(max-min+1)+min);
+function ataqueAgua (){
+    ataqueJugador = 'AGUA 💧';
+    ataqueEnemigo()
+    //alert("Elegiste ataque " + ataqueJugador);
+}
+
+function ataqueTierra (){
+    ataqueJugador = 'TIERRA 🌿';
+    ataqueEnemigo()
+    //alert("Elegiste ataque " + ataqueJugador);
+    
+}
+
+function ataqueEnemigo() {
+    ataqueContrario= aleatorio(1,3);
+
+    if(ataqueContrario==1){
+        ataqueContrario='FUEGO 🔥'
+        //alert(`Tu enemigo eligió ataque FUEGO`);
+        } else if (ataqueContrario==2) {
+            ataqueContrario='AGUA 💧'
+        //alert(`Tu enemigo eligió ataque AGUA`);
+         } else if (ataqueContrario==3){
+            ataqueContrario='TIERRA 🌿'
+            //alert(`Tu enemigo eligió ataque TIERRA`);
+         } else {
+             alert("Ups algo salió mal")
+         }
+
+        combate()
+}
+
+
+function combate() {
+    if(ataqueJugador==ataqueContrario) {
+        crearMensaje("EMPATE");
+    } else if(ataqueJugador== 'FUEGO' && ataqueContrario=='TIERRA') {
+        crearMensaje("GANASTE");
+    } else if (ataqueJugador=='AGUA' && ataqueContrario== 'FUEGO'){
+        crearMensaje("GANASTE");
+    } else if (ataqueJugador== 'TIERRA' && ataqueContrario=='AGUA'){
+        crearMensaje("GANASTE");
+    }else {
+        crearMensaje("PERDISTE");
     }
 
-let botonMascotaJugador = document.querySelector('#boton-mascota');
-botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
+}
+
+function crearMensaje (resultado) {
+
+    let mensajesSection = document.querySelector('#mensajes');
+
+    let = parrafo = document.createElement('p')
+    parrafo.innerHTML= 'Tu mokepon atacó con '+  ataqueJugador + ' el enemigo atacó con ' + ataqueContrario + '- ' + resultado + '-';
+    mensajesSection.appendChild(parrafo);
+
+    
+}
 
 
 
+
+window.addEventListener('load',  iniciarJuego);

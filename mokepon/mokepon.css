@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    padding: 0;
+    padding:0;
 }
 
 html {
@@ -8,24 +8,52 @@ html {
 
 }
 
+body {
+    margin: 30px auto;
+    background-color: black;
+}
+h1 {
+    text-align: center;
+    color: red;
+    margin: 20px;
+}
+
+button {
+    cursor: pointer;
+}
+h2 {
+    color: rgb(53, 3, 99);
+    margin: 10px;
+}
 #pet {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    background-color: rgba(130, 213, 240, 0.573);
+    margin: 20px auto;
+    align-items: center;
+    border-radius: 20px;
 }
 
 label {
     width: fit-content;
     cursor: pointer;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 3px;
+}
+
+label:hover{
+    color: rgb(243, 136, 136);
 }
 
 #boton-mascota {
     width: fit-content;
     border: none;
-    width: 20%;
+    width: 15%;
     height: 30px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin: 20px;
     color: rgb(240, 81, 174);
     font-weight: bold;
 }
@@ -34,3 +62,88 @@ label {
     background-color: rgba(246, 168, 168, 0.622);
 }
 
+#atack {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(230, 221, 173, 0.839);
+    margin: 20px auto;
+    align-items: center;
+    border-radius: 20px;
+}
+
+#atack p {
+    font-size: 20px;
+}
+
+#atack p span {
+    font-weight: bold;
+}
+
+#boton-fuego {
+    background-color: rgba(255, 0, 0, 0.463);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    margin: 20px;
+}
+
+#boton-agua {
+    background-color: rgba(160, 217, 241, 0.618);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    color: blue;
+    font-size: 16px;
+    margin: 20px;
+
+}
+
+#boton-tierra {
+    background-color: rgba(234, 179, 50, 0.463);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: brown;
+    font-size: 16px;
+    margin: 20px;
+}
+
+#mensajes{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    align-items: center;
+    border-radius: 20px;
+}
+
+#reiniciar{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(218, 238, 103);
+    margin: 20px auto;
+    align-items: center;
+    border-radius: 20px;
+}
+
+#reiniciar button {
+    background-color: rgba(234, 179, 50, 0.584);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(103, 33, 3);
+    font-size: 16px;
+    margin: 20px;
+}
+
+#mensajes p {
+    background-color: rgba(171, 249, 168, 0.793);
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 10px;
+}
