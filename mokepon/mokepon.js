@@ -181,8 +181,4 @@ function crearMensajeFinal(resultadoFinal) {
 }
 
 
-
-
-
-
 window.addEventListener('load',  iniciarJuego);
