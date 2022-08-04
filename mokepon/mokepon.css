@@ -113,6 +113,7 @@ label:hover{
 }
 
 #mensajes{
+    position: relative;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -129,21 +130,34 @@ label:hover{
     margin: 20px auto;
     align-items: center;
     border-radius: 20px;
+    margin-top: 80px;
 }
 
 #reiniciar button {
-    background-color: rgba(234, 179, 50, 0.584);
+    background-color: rgba(236, 167, 8, 0.584);
     border: none;
     border-radius: 5px;
     padding: 10px;
     color: rgb(103, 33, 3);
     font-size: 16px;
-    margin: 20px;
+    margin: 10px;
 }
 
 #mensajes p {
-    background-color: rgba(171, 249, 168, 0.793);
+    background-color: rgba(171, 249, 168, 0.895);
     margin-bottom: 20px;
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
+    position: fixed;
+}
+
+#resultadoFinal {
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    font-size: 40px;
+    text-align: center;
+    bottom: 400px;
+    color: rgb(230, 80, 165);
+    font-weight: bold;
 }

@@ -1,5 +1,7 @@
 let ataqueJugador
 let ataqueContrario
+let vidasJugador = 3;
+let vidasEnemigo = 3;
 
 function iniciarJuego() {
     let botonMascotaJugador = document.querySelector('#boton-mascota');
@@ -56,22 +58,21 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
-
 function seleccionarMascotaEnemigo() {
-    let ataqueAleatorio = aleatorio(1,6);
+    let mascotaEnemigo = aleatorio(1,6);
     let spanMascotaEnemigo = document.querySelector('#mascota-enemigo')
     
-    if(ataqueAleatorio==1) {
+    if(mascotaEnemigo==1) {
         spanMascotaEnemigo.innerHTML="Hipodogue"
-    } else if (ataqueAleatorio==2){
+    } else if (mascotaEnemigo==2){
         spanMascotaEnemigo.innerHTML="Capipepo"
-    } else if (ataqueAleatorio==3){
+    } else if (mascotaEnemigo==3){
         spanMascotaEnemigo.innerHTML="Ratigueya"
-    } else if (ataqueAleatorio==4){
+    } else if (mascotaEnemigo==4){
         spanMascotaEnemigo.innerHTML="Langostelvis"
-    }else if (ataqueAleatorio==5){
+    }else if (mascotaEnemigo==5){
         spanMascotaEnemigo.innerHTML="Tucapalma"
-    }else if (ataqueAleatorio==6){
+    }else if (mascotaEnemigo==6){
         spanMascotaEnemigo.innerHTML="Pydos"
     }
 }
@@ -96,19 +97,17 @@ function ataqueTierra (){
 }
 
 function ataqueEnemigo() {
-    ataqueContrario= aleatorio(1,3);
+    ataqueContrario = aleatorio(1,3);
 
-    if(ataqueContrario==1){
-        ataqueContrario='FUEGO 🔥'
+    if(ataqueContrario == 1){
+        ataqueContrario ='FUEGO 🔥';
         //alert(`Tu enemigo eligió ataque FUEGO`);
-        } else if (ataqueContrario==2) {
-            ataqueContrario='AGUA 💧'
+        } else if (ataqueContrario == 2) {
+            ataqueContrario ='AGUA 💧';
         //alert(`Tu enemigo eligió ataque AGUA`);
-         } else if (ataqueContrario==3){
-            ataqueContrario='TIERRA 🌿'
+         } else if (ataqueContrario == 3){
+            ataqueContrario = 'TIERRA 🌿';
             //alert(`Tu enemigo eligió ataque TIERRA`);
-         } else {
-             alert("Ups algo salió mal")
          }
 
         combate()
@@ -116,30 +115,72 @@ function ataqueEnemigo() {
 
 
 function combate() {
-    if(ataqueJugador==ataqueContrario) {
-        crearMensaje("EMPATE");
-    } else if(ataqueJugador== 'FUEGO' && ataqueContrario=='TIERRA') {
-        crearMensaje("GANASTE");
-    } else if (ataqueJugador=='AGUA' && ataqueContrario== 'FUEGO'){
-        crearMensaje("GANASTE");
-    } else if (ataqueJugador== 'TIERRA' && ataqueContrario=='AGUA'){
-        crearMensaje("GANASTE");
-    }else {
-        crearMensaje("PERDISTE");
-    }
 
+    let spanVidaJugador = document.querySelector('#spanVidaJugador');
+    let spanVidaEnemigo = document.querySelector('#spanVidaEnemigo');
+
+    if(ataqueContrario == ataqueJugador) {
+        crearMensaje('EMPATE');
+    } 
+        else if(ataqueJugador == 'FUEGO 🔥' && ataqueContrario == 'TIERRA 🌿') {
+        crearMensaje('GANASTE');
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo;
+    } 
+
+        else if (ataqueJugador =='AGUA 💧' && ataqueContrario == 'FUEGO 🔥'){
+        crearMensaje('GANASTE');
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo;
+    } 
+
+        else if (ataqueJugador == 'TIERRA 🌿' && ataqueContrario =='AGUA 💧'){
+        crearMensaje('GANASTE');
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo;
+        }
+
+        else {
+        crearMensaje('PERDISTE');
+        vidasJugador--
+        spanVidaJugador.innerHTML = vidasJugador;
+    }
+        revisarVidas()
 }
 
-function crearMensaje (resultado) {
+function revisarVidas(){
+    if(vidasJugador==0){
+        crearMensajeFinal('Oww Perdiste 🥹');
+    } else if (vidasEnemigo==0){
+        crearMensajeFinal('GANASTE 🥳');
+
+    }
+}
+
+function crearMensaje(resultado) {
 
     let mensajesSection = document.querySelector('#mensajes');
 
     let = parrafo = document.createElement('p')
-    parrafo.innerHTML= 'Tu mokepon atacó con '+  ataqueJugador + ' el enemigo atacó con ' + ataqueContrario + '- ' + resultado + '-';
+    parrafo.innerHTML= 'Tu mokepon atacó con '+  ataqueJugador + ' el enemigo atacó con ' + ataqueContrario + '- ' + resultado ;
     mensajesSection.appendChild(parrafo);
 
     
 }
+
+function crearMensajeFinal(resultadoFinal) {
+
+    let mensajesSection = document.querySelector('#mensajes');
+
+    let parrafoResultadoFinal = document.createElement('p');
+    parrafoResultadoFinal.setAttribute('id','resultadoFinal')
+    parrafoResultadoFinal.innerHTML= resultadoFinal;
+    mensajesSection.appendChild(parrafoResultadoFinal);
+
+    
+}
+
+
 
 
 
