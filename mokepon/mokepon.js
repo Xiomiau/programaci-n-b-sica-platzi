@@ -4,6 +4,13 @@ let vidasJugador = 3;
 let vidasEnemigo = 3;
 
 function iniciarJuego() {
+
+    let seccionAtaque = document.querySelector('#atack');
+    seccionAtaque.style.display='none';
+    
+    
+
+
     let botonMascotaJugador = document.querySelector('#boton-mascota');
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 
@@ -16,8 +23,10 @@ function iniciarJuego() {
     let botonTierra=document.querySelector('#boton-tierra');
     botonTierra.addEventListener('click', ataqueTierra);
 
-    let botonReiniciar = document.querySelector('#reiniciar');
+    let botonReiniciar = document.querySelector('#reiniciarBtn');
     botonReiniciar.addEventListener('click', reiniciarJuego);
+    botonReiniciar.style.display= 'none';
+    
 
 }
 
@@ -26,6 +35,12 @@ function aleatorio(min,max){
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 function seleccionarMascotaJugador() {
+
+    let seccionAtaque = document.querySelector('#atack');
+    seccionAtaque.style.display='flex';
+
+    let seccionMascota = document.querySelector('#pet');
+    seccionMascota.style.display='none';
 
     // apuntadores de las mascotas
     const hipodoge = document.querySelector('#hipodoge');
@@ -57,7 +72,8 @@ function seleccionarMascotaJugador() {
         spanMascotaJugador.innerHTML="Pydos"
     }
     else {
-        alert("No has seleccionado a tu Mokepon")
+        alert('Primero debes elegir tu combatiente')
+        reiniciarJuego()
     }
 
     seleccionarMascotaEnemigo()
@@ -155,7 +171,7 @@ function combate() {
 
 function revisarVidas(){
     if(vidasJugador==0){
-        crearMensajeFinal('Oww Perdiste 🥹');
+        crearMensajeFinal('Oww Perdiste 😢');
     } else if (vidasEnemigo==0){
         crearMensajeFinal('GANASTE 🥳');
 
@@ -176,6 +192,8 @@ function crearMensaje(resultado) {
 function crearMensajeFinal(resultadoFinal) {
 
     let mensajesSection = document.querySelector('#mensajes');
+    let botonReiniciar = document.querySelector('#reiniciarBtn');
+
 
     let parrafoResultadoFinal = document.createElement('p');
     parrafoResultadoFinal.setAttribute('id','resultadoFinal')
@@ -187,7 +205,8 @@ function crearMensajeFinal(resultadoFinal) {
     let botonAgua=document.querySelector('#boton-agua');
     botonAgua.disabled=true;
     let botonTierra=document.querySelector('#boton-tierra');
-    botonTierra.disabled=true;    
+    botonTierra.disabled=true; 
+    botonReiniciar.style.display= 'block';
 }
 
 

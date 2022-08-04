@@ -3,161 +3,29 @@
     padding:0;
 }
 
-html {
-    font-family: 'Poppins', sans-serif;
-
+:root {
+--pink-lavender: hsla(278, 35%, 78%, 1);
+--orchid-pink: hsla(337, 100%, 89%, 1);
+--nadeshiko-pink: hsla(338, 100%, 84%, 1);
+--uranian-blue: hsla(208, 97%, 87%, 1);
+--baby-blue-eyes: hsla(209, 100%, 82%, 1);
 }
 
 body {
-    margin: 30px auto;
-    background-color: black;
+    background: linear-gradient(90deg, rgba(205,180,219,1) 0%, rgba(255,200,221,1) 25%, rgba(255,175,204,1) 47%, rgba(189,224,254,1) 98%);
+    
 }
+
 h1 {
     text-align: center;
-    color: red;
-    margin: 20px;
+    font-size: 60px;
+    font-family: 'Pokemon Hollow', sans-serif;
+    color: white;
 }
 
-button {
-    cursor: pointer;
-}
-h2 {
-    color: rgb(53, 3, 99);
-    margin: 10px;
-}
-#pet {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(130, 213, 240, 0.573);
-    margin: 20px auto;
-    align-items: center;
-    border-radius: 20px;
-}
-
-label {
+.container {
     width: fit-content;
-    cursor: pointer;
-    font-weight: bold;
-    color: white;
-    letter-spacing: 3px;
-}
-
-label:hover{
-    color: rgb(243, 136, 136);
-}
-
-#boton-mascota {
-    width: fit-content;
-    border: none;
-    width: 15%;
-    height: 30px;
-    border-radius: 10px;
-    margin: 20px;
-    color: rgb(240, 81, 174);
-    font-weight: bold;
-}
-
-#boton-mascota:hover {
-    background-color: rgba(246, 168, 168, 0.622);
-}
-
-#atack {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(230, 221, 173, 0.839);
+    border: 1px solid rgb(253, 253, 253);
     margin: 20px auto;
-    align-items: center;
-    border-radius: 20px;
 }
 
-#atack p {
-    font-size: 20px;
-}
-
-#atack p span {
-    font-weight: bold;
-}
-
-#boton-fuego {
-    background-color: rgba(255, 0, 0, 0.463);
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
-    font-size: 16px;
-    margin: 20px;
-}
-
-#boton-agua {
-    background-color: rgba(160, 217, 241, 0.618);
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
-    color: blue;
-    font-size: 16px;
-    margin: 20px;
-
-}
-
-#boton-tierra {
-    background-color: rgba(234, 179, 50, 0.463);
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    color: brown;
-    font-size: 16px;
-    margin: 20px;
-}
-
-#mensajes{
-    position: relative;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-    align-items: center;
-    border-radius: 20px;
-}
-
-#reiniciar{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(218, 238, 103);
-    margin: 20px auto;
-    align-items: center;
-    border-radius: 20px;
-    margin-top: 80px;
-}
-
-#reiniciar button {
-    background-color: rgba(236, 167, 8, 0.584);
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    color: rgb(103, 33, 3);
-    font-size: 16px;
-    margin: 10px;
-}
-
-#mensajes p {
-    background-color: rgba(171, 249, 168, 0.895);
-    margin-bottom: 20px;
-    border-radius: 20px;
-    padding: 20px;
-    position: fixed;
-}
-
-#resultadoFinal {
-    width: 400px;
-    height: 100px;
-    position: absolute;
-    font-size: 40px;
-    text-align: center;
-    bottom: 400px;
-    color: rgb(230, 80, 165);
-    font-weight: bold;
-}
