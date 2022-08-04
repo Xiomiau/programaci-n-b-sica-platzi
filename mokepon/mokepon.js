@@ -14,9 +14,14 @@ function iniciarJuego() {
     botonAgua.addEventListener('click', ataqueAgua)
 
     let botonTierra=document.querySelector('#boton-tierra');
-    botonTierra.addEventListener('click', ataqueTierra)
+    botonTierra.addEventListener('click', ataqueTierra);
+
+    let botonReiniciar = document.querySelector('#reiniciar');
+    botonReiniciar.addEventListener('click', reiniciarJuego);
 
 }
+
+
 function aleatorio(min,max){
     return Math.floor(Math.random()*(max-min+1)+min);
 }
@@ -105,10 +110,10 @@ function ataqueEnemigo() {
         } else if (ataqueContrario == 2) {
             ataqueContrario ='AGUA 💧';
         //alert(`Tu enemigo eligió ataque AGUA`);
-         } else if (ataqueContrario == 3){
+        } else if (ataqueContrario == 3){
             ataqueContrario = 'TIERRA 🌿';
             //alert(`Tu enemigo eligió ataque TIERRA`);
-         }
+        }
 
         combate()
 }
@@ -177,8 +182,17 @@ function crearMensajeFinal(resultadoFinal) {
     parrafoResultadoFinal.innerHTML= resultadoFinal;
     mensajesSection.appendChild(parrafoResultadoFinal);
 
-    
+    let botonFuego=document.querySelector('#boton-fuego');
+    botonFuego.disabled=true;
+    let botonAgua=document.querySelector('#boton-agua');
+    botonAgua.disabled=true;
+    let botonTierra=document.querySelector('#boton-tierra');
+    botonTierra.disabled=true;    
 }
 
+
+function reiniciarJuego() {
+    location.reload()
+}
 
 window.addEventListener('load',  iniciarJuego);
