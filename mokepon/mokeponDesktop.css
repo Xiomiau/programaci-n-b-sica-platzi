@@ -55,7 +55,7 @@ h2, h3 {
 }
 
 .mascota-container {
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
     text-align: center;
     justify-items: center;
