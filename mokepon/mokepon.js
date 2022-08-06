@@ -170,9 +170,9 @@ function combate() {
 
 function revisarVidas(){
     if(vidasJugador==0){
-        crearMensajeFinal('JA,JA! mamaste! Perdiste.');
+        crearMensajeFinal('Suerte para la próxima. 🙁');
     } else if (vidasEnemigo==0){
-        crearMensajeFinal('Eres la mera vena, ganaste.');
+        crearMensajeFinal('Yeii, ganaste! 🎉');
 
     }
 }
@@ -185,7 +185,7 @@ function crearMensaje() {
     let = parrafoAtaqueEnemigo = document.createElement('p')
 
     parrafoAtaqueJugador.innerHTML= 'Tu mokepon atacó con '+  ataqueJugador;
-    parrafoAtaqueJugador.setAttribute('class', 'parrafoAtaqueJugador');
+    parrafoAtaqueJugador.setAttribute('class', 'parrafoAtaqueJugador ataque');
 
     if (ataqueJugador=='FUEGO 🔥'){
         parrafoAtaqueJugador.style.boxShadow='1px -1px 4px 3px rgb(240, 58, 45)';
@@ -199,7 +199,7 @@ function crearMensaje() {
 
 
     parrafoAtaqueEnemigo.innerHTML=' El enemigo atacó con ' + ataqueContrario;
-    parrafoAtaqueEnemigo.setAttribute('class', 'parrafoAtaqueEnemigo')
+    parrafoAtaqueEnemigo.setAttribute('class', 'parrafoAtaqueEnemigo ataque')
     if (ataqueContrario=='FUEGO 🔥'){
         parrafoAtaqueEnemigo.style.boxShadow='1px -1px 4px 3px rgb(240, 58, 45)';
     } else if (ataqueContrario =='AGUA 💧') {
