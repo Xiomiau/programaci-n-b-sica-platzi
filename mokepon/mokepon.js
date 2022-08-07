@@ -24,7 +24,7 @@ let botonFuego
 let botonAgua   
 let botonTierra
 let botones=[] 
-let comboAtaqueJugador=[]  
+let ataqueJugador=[]  
 let ataquesMokeponEnemigo
 
 
@@ -144,18 +144,18 @@ function secuenciaAtaque () {
     botones.forEach((boton) => {
         boton.addEventListener('click', (e) => {
         if(e.target.textContent=== '🔥') {
-            comboAtaqueJugador.push('FUEGO')
-            console.log(comboAtaqueJugador)
+            ataqueJugador.push('FUEGO')
+            console.log(ataqueJugador)
             boton.style.background= '#112f58';
 
         } else if (e.target.textContent=== '💧') {
-            comboAtaqueJugador.push('AGUA')
-            console.log(comboAtaqueJugador)
+            ataqueJugador.push('AGUA')
+            console.log(ataqueJugador)
             boton.style.background= '#112f58';
 
         } else if (e.target.textContent=== '🌿'){
-            comboAtaqueJugador.push('TIERRA')
-            console.log(comboAtaqueJugador)
+            ataqueJugador.push('TIERRA')
+            console.log(ataqueJugador)
             boton.style.background= '#112f58';
         }
         ataqueEnemigo()
@@ -184,30 +184,41 @@ function ataqueEnemigo() {
             ataqueContrario.push('TIERRA 🌿');
         }
         console.log(ataqueContrario)
-        combate()
+        iniciarPelea()
+    }
+
+function iniciarPelea () {
+        if(ataqueJugador.length===5) {
+            combate()
+        }
     }
     
-    function combate() {
-    // if(ataqueContrario == ataqueJugador) {
-    //     crearMensaje('EMPATE');
-    // }else if(ataqueJugador == 'FUEGO 🔥' && ataqueContrario == 'TIERRA 🌿') {
-    //     crearMensaje('GANASTE');
-    //     vidasEnemigo--
-    //     spanVidaEnemigo.innerHTML = vidasEnemigo;
-    // } else if (ataqueJugador =='AGUA 💧' && ataqueContrario == 'FUEGO 🔥'){
-    //     crearMensaje('GANASTE');
-    //     vidasEnemigo--
-    //     spanVidaEnemigo.innerHTML = vidasEnemigo;
-    // } else if (ataqueJugador == 'TIERRA 🌿' && ataqueContrario =='AGUA 💧'){
-    //     crearMensaje('GANASTE');
-    //     vidasEnemigo--
-    //     spanVidaEnemigo.innerHTML = vidasEnemigo;
-    // } else {
-    //     crearMensaje('PERDISTE');
-    //     vidasJugador--
-    //     spanVidaJugador.innerHTML = vidasJugador;
-    // }
-    //     revisarVidas()
+function combate() {
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        console.log(ataqueJugador[index])
+        
+    }
+
+    if(ataqueContrario == ataqueJugador) {
+        crearMensaje('EMPATE');
+    }else if(ataqueJugador == 'FUEGO 🔥' && ataqueContrario == 'TIERRA 🌿') {
+        crearMensaje('GANASTE');
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo;
+    } else if (ataqueJugador =='AGUA 💧' && ataqueAleatorioContrario == 'FUEGO 🔥'){
+        crearMensaje('GANASTE');
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo;
+    } else if (ataqueJugador == 'TIERRA 🌿' && ataqueAleatorioContrario =='AGUA 💧'){
+        crearMensaje('GANASTE');
+        vidasEnemigo--
+        spanVidaEnemigo.innerHTML = vidasEnemigo;
+    } else {
+        crearMensaje('PERDISTE');
+        vidasJugador--
+        spanVidaJugador.innerHTML = vidasJugador;
+    }
+        revisarVidas()
     }
 
     function revisarVidas(){
