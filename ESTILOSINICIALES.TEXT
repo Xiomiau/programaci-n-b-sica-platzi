@@ -152,3 +152,6 @@ label:hover{
     color: rgb(230, 80, 165);
     font-weight: bold;
 }
+
+
+<input   type="radio" name="mascotas">

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/mokepon/mokeponMobile.css">
     <link rel="stylesheet" href="/mokepon/mokeponDesktop.css" media="(min-width:1440px)">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300&display=swap" rel="stylesheet">
@@ -14,23 +13,21 @@
 </head>
 <body>
     <h1 class="title">MOKEPON! 🔥💧🌿 </h1>
-
-    
         <section id="pet">
-                <h2>Elige a tu combatiente:</h2>
-            <div class="card-pet-slider">
-                <div id="contenedor-tarjetas" class="mascota-container"></div>
-            </div>
+        <h2>Elige a tu combatiente:</h2>
+                <div class="card-pet-slider">
+                        <div id="contenedor-tarjetas" class="mascota-container"> 
+                            <!-- aqui van las tarjetas de los mokepones con js -->
+                        </div>
+                </div>
         </section>
 
-    
         <section id="atack">
             <h3>Elije tu ataque:</h3>
                     <div class="card-ataques">
-                        <div class="botones-ataque">
-                            <button class="ataques" id="boton-fuego">Fuego 🔥</button>
-                            <button class="ataques" id="boton-agua">Agua 💧 </button>
-                            <button class="ataques" id="boton-tierra">Tierra 🌿</button>
+                        
+                        <div id="contenedorAtaques" class="botones-ataque">
+                            
                         </div>
                 
                         <h2>COMBATE:</h2>
@@ -39,12 +36,12 @@
                         </section>
                         <div class="vidas-ataques">
                                         <div class="vidas vidaJugador">
-                                            <p class="vidas-parrafo">Tu Mokepon <span id="mascota-jugador"></span> tiene <span id="spanVidaJugador">3</span>  vidas</p>
+                                            <p class="vidas-parrafo">Tu Mokepon <span id="mascota-jugador"></span> tiene <span id="spanVidaJugador">5</span>  vidas</p>
                                         </div>
 
 
                                         <div class="vidas vidaEnemigo">
-                                                <p class="vidas-parrafo">El Mokepon <span id="mascota-enemigo"></span> de tu enemigo tiene <span id="spanVidaEnemigo">3</span> vidas</p>
+                                                <p class="vidas-parrafo">El Mokepon <span id="mascota-enemigo"></span> de tu enemigo tiene <span id="spanVidaEnemigo">5</span> vidas</p>
                                         </div>
                                 
                                 
@@ -54,13 +51,10 @@
                                         
                         </div>
     
-                        </div>
+                    </div>
         </section>
-    </main>
-
     
-
-
     <script src="/mokepon/mokepon.js"></script>
 </body>
 </html>
+

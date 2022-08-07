@@ -80,7 +80,7 @@ h2, h3{
     font-size: 25px;
     font-family: 'Catamaran', sans-serif;
     margin: 25px;
-    box-shadow: 1px -1px 13px 5px rgb(228, 75, 4);
+    /* //box-shadow: 1px -1px 13px 5px rgb(228, 75, 4); */
     border-radius: 25px;
     scroll-snap-align:center;
     position: relative;
