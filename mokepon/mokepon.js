@@ -1,20 +1,26 @@
-const spanMascotaJugador=document.querySelector('#mascota-jugador');
-const botonFuego=document.querySelector('#boton-fuego');
-const botonAgua=document.querySelector('#boton-agua');
-const botonTierra=document.querySelector('#boton-tierra');
-const seccionAtaque = document.querySelector('#atack');
-const seccionMascota = document.querySelector('#pet');
+const spanMascotaJugador = document.querySelector('#mascota-jugador');
+const botonFuego         = document.querySelector('#boton-fuego');
+const botonAgua          = document.querySelector('#boton-agua');
+const botonTierra        = document.querySelector('#boton-tierra');
+const seccionAtaque      = document.querySelector('#atack');
+const seccionMascota     = document.querySelector('#pet');
 const spanMascotaEnemigo = document.querySelector('#mascota-enemigo');
-const spanVidaJugador = document.querySelector('#spanVidaJugador');
-const spanVidaEnemigo = document.querySelector('#spanVidaEnemigo');
-const mensajesSection = document.querySelector('#mensajes');
-const botonReiniciar = document.querySelector('#reiniciarBtn');
+const spanVidaJugador    = document.querySelector('#spanVidaJugador');
+const spanVidaEnemigo    = document.querySelector('#spanVidaEnemigo');
+const mensajesSection    = document.querySelector('#mensajes');
+const botonReiniciar     = document.querySelector('#reiniciarBtn');
 const contenedorTarjetas = document.querySelector('#contenedor-tarjetas');
+
+botonFuego.addEventListener('click', ataqueFuego)
+botonAgua.addEventListener('click', ataqueAgua)
+botonTierra.addEventListener('click', ataqueTierra);
+botonReiniciar.addEventListener('click', reiniciarJuego);
+botonReiniciar.style.display= 'none'; 
 
 let ataqueJugador
 let ataqueContrario
-let vidasJugador = 3;
-let vidasEnemigo = 3;
+let vidasJugador = 5;
+let vidasEnemigo = 5;
 let opcionDeMokepones
 let inputRatigueya
 let inputHipodoge
@@ -116,28 +122,35 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
-function seleccionarMascotaEnemigo() {
-    let mascotaEnemigo = aleatorio(1,6);
-    if(mascotaEnemigo==1) {
-        spanMascotaEnemigo.innerHTML="Hipodoge"
-    } else if (mascotaEnemigo==2){
-        spanMascotaEnemigo.innerHTML="Capipepo"
-    } else if (mascotaEnemigo==3){
-        spanMascotaEnemigo.innerHTML="Ratigueya"
-    } else if (mascotaEnemigo==4){
-        spanMascotaEnemigo.innerHTML="Langostelvis"
-    }else if (mascotaEnemigo==5){
-        spanMascotaEnemigo.innerHTML="Tucapalma"
-    }else if (mascotaEnemigo==6){
-        spanMascotaEnemigo.innerHTML="Pydos"
+function extraerAtaques () {
+    let ataques
+    for (let i = 0; i < mokepones.length; i++) {
+        if(mascotaJugador=== mokepones[i].nombre) {
+            ataques= mokepones[i].ataques
+        }
     }
+    mostrarAtaques(ataques)
+}
 }
 
-function ataqueFuego (){
-    ataqueJugador = 'FUEGO 🔥';
-    ataqueEnemigo()
-    //alert("Elegiste ataque " + ataqueJugador);
-}
+function secuenciaAtaque () {
+    botones.forEach((boton) => {
+        boton.addEventListener('click', (e) => {
+        if(e.target.textContent=== '🔥') {
+            comboAtaqueJugador.push('FUEGO')
+            console.log(comboAtaqueJugador)
+            boton.style.background= '#112f58';
+
+        } else if (e.target.textContent=== '💧') {
+            comboAtaqueJugador.push('AGUA')
+            console.log(comboAtaqueJugador)
+            boton.style.background= '#112f58';
+
+        } else if (e.target.textContent=== '🌿'){
+            comboAtaqueJugador.push('TIERRA')
+            console.log(comboAtaqueJugador)
+            boton.style.background= '#112f58';
+        }
 
 function ataqueAgua (){
     ataqueJugador = 'AGUA 💧';
@@ -145,11 +158,9 @@ function ataqueAgua (){
     //alert("Elegiste ataque " + ataqueJugador);
 }
 
-function ataqueTierra (){
-    ataqueJugador = 'TIERRA 🌿';
-    ataqueEnemigo()
-    //alert("Elegiste ataque " + ataqueJugador);
-    
+function seleccionarMascotaEnemigo() {
+    let mascotaEnemigo = aleatorio(0, mokepones.length -1);
+
 }
 
 function ataqueEnemigo() {
@@ -163,9 +174,9 @@ function ataqueEnemigo() {
             ataqueContrario = 'TIERRA 🌿';
         }
         combate()
-}
-
-function combate() {
+    }
+    
+    function combate() {
     if(ataqueContrario == ataqueJugador) {
         crearMensaje('EMPATE');
     }else if(ataqueJugador == 'FUEGO 🔥' && ataqueContrario == 'TIERRA 🌿') {
