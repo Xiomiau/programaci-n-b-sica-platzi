@@ -10,7 +10,7 @@ const contenedorTarjetas = document.querySelector('#contenedor-tarjetas');
 const contenedorAtaques  = document.querySelector('#contenedorAtaques');
 
 const ataqueJugadorDiv=document.querySelector('#ataque-jugador');
-const ataqueEnemyDiv =document.querySelector('#contenedorAtaques');
+const ataqueEnemyDiv =document.querySelector('#ataque-enemy');
 
 
 let mascotaJugador
@@ -57,19 +57,19 @@ hipodoge.ataques.push (
     {nombre: '🌿', id:'boton-tierra'},
     )    
 capipepo.ataques.push (
-        {nombre: '🌿', id:'boton-tierra'},
-        {nombre: '🌿', id:'boton-tierra'},
-        {nombre: '🌿', id:'boton-tierra'},
-        {nombre: '💧', id:'boton-agua'},
-        {nombre: '🔥', id:'boton-fuego'}
-        )       
+    {nombre: '🌿', id:'boton-tierra'},
+    {nombre: '🌿', id:'boton-tierra'},
+    {nombre: '🌿', id:'boton-tierra'},
+    {nombre: '💧', id:'boton-agua'},
+    {nombre: '🔥', id:'boton-fuego'}
+    )       
 ratigueya.ataques.push (
-            {nombre: '🔥', id:'boton-fuego'},
-            {nombre: '🔥', id:'boton-fuego'},
-            {nombre: '🔥', id:'boton-fuego'},
-            {nombre: '💧', id:'boton-agua'},
-            {nombre: '🌿', id:'boton-tierra'},
-            )
+    {nombre: '🔥', id:'boton-fuego'},
+    {nombre: '🔥', id:'boton-fuego'},
+    {nombre: '🔥', id:'boton-fuego'},
+    {nombre: '💧', id:'boton-agua'},
+    {nombre: '🌿', id:'boton-tierra'},
+    )
 
 mokepones.push(hipodoge,capipepo,ratigueya);
 
@@ -78,7 +78,7 @@ function iniciarJuego() {
     
     mokepones.forEach((mokepon)=>{
         opcionDeMokepones = ` 
-        <label  for=${mokepon.nombre}> ${mokepon.nombre}
+        <label  for=${mokepon.nombre}> ${mokepon.nombre} 
         <input id=${mokepon.nombre} type="radio" name="mascota"  > 
         <img width="200px" src=${mokepon.foto} alt=${mokepon.nombre}>
         </label> `
@@ -212,31 +212,31 @@ for (let index = 0; index < ataqueJugador.length; index++){
             indexAmbosOponentes(index,index)
             crearMensaje('EMPATE 🤜🏽🤛🏽');
             victoriasJugador++
-            spanVidaJugador.innerHTML = victoriasJugador
+            spanVidaJugador.innerHTML = `${victoriasJugador} victorias`
         }else if(ataqueJugador[index] === 'FUEGO 🔥' && ataqueEnemigo[index] === 'TIERRA 🌿') {
             indexAmbosOponentes(index,index)
             crearMensaje('GANASTE');
             victoriasJugador++
-            spanVidaJugador.innerHTML = victoriasJugador;
+            spanVidaJugador.innerHTML = `${victoriasJugador} victorias`;
 
 
         }else if(ataqueJugador[index]==='AGUA 💧' && ataqueEnemigo[index]==='FUEGO 🔥') {
             indexAmbosOponentes(index,index)
             crearMensaje('GANASTE');
             victoriasJugador++
-            spanVidaJugador.innerHTML = victoriasJugador;
+            spanVidaJugador.innerHTML = `${victoriasJugador} victorias`;
 
         }else if(ataqueJugador[index]==='TIERRA 🌿' && ataqueEnemigo[index]==='AGUA 💧' ) {
             indexAmbosOponentes(index,index)
             crearMensaje('GANASTE');
             victoriasJugador++
-            spanVidaJugador.innerHTML = victoriasJugador;
+            spanVidaJugador.innerHTML = `${victoriasJugador} victorias`;
 
         }else {
             indexAmbosOponentes(index,index)
             crearMensaje('PERDISTE');
             victoriasEnemigo++
-            spanVidaEnemigo.innerHTML = victoriasEnemigo;
+            spanVidaEnemigo.innerHTML = `${victoriasEnemigo} victorias`;
         }
     }
     revisarVictorias()
@@ -269,6 +269,7 @@ ataqueEnemyDiv.appendChild(parrafoAtaqueEnemigo)
 function crearMensajeFinal(resultadoFinal) {
 
     mensajesSection.innerHTML= resultadoFinal
+    mensajesSection.setAttribute('class', 'final')
 
     botonFuego.disabled=true;
     botonAgua.disabled=true;
