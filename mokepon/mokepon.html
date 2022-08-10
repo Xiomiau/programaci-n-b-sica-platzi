@@ -22,6 +22,21 @@
                 </div>
 </section>
 
+<section id="ver-mapa">
+    <h1>Recorre el mapa con tu Mokepon</h1>
+    <canvas  id="mapa"></canvas>
+    <div class="contMov">
+        <button onmouseup="detenerMovimiento()" class="mov" onmousedown="moverIzquierda()">Izquierda</button>
+        <button onmouseup="detenerMovimiento()" class="mov" onmousedown="moverAbajo()">Abajo</button>
+        <button onmouseup="detenerMovimiento()" class="mov" onmousedown="moverArriba()">Arriba</button>
+        <button onmouseup="detenerMovimiento()" class="mov" onmousedown="moverDerecha()">Derecha</button>
+    
+    </div>
+
+
+
+</section>
+
 <section id="atack">
     <h3>Elije tu ataque:</h3>
     <div class="card-ataques">
@@ -48,8 +63,6 @@
             <!-- aqui van los ataques de cada jugador -->
         </div>    
     </section>
-
-   
 
     <script src="/mokepon/mokepon.js"></script>
 </body>
