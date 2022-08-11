@@ -1,3 +1,4 @@
+
 const spanMascotaJugador = document.querySelector('#mascota-jugador');
 const seccionMascota     = document.querySelector('#pet');
 const spanVidaJugador    = document.querySelector('#spanVidaJugador');
@@ -38,6 +39,7 @@ let mokepones = []
 let elHipodoge
 let elCapipepo
 let laRatigueya
+let jugadorId=null
 
 let lienzo = mapa.getContext("2d")
 let intervalo
@@ -162,6 +164,21 @@ function iniciarJuego() {
 
     botonReiniciar.addEventListener('click', reiniciarJuego);
     botonReiniciar.style.display= 'none'
+
+    unirseAlJuego()
+}
+
+function unirseAlJuego() {
+    fetch("http://localhost:8080/unirse")
+    .then(function(res){
+        if(res.ok){
+            res.text()
+                .then(function(respuesta){
+                    console.log(respuesta)
+                    jugadorId=respuesta
+                })
+        }
+    })
 }
 
 
@@ -186,9 +203,24 @@ function seleccionarMascotaJugador() {
         alert('Primero debes elegir tu combatiente')
         reiniciarJuego()
     }
+
+    seleccionarMokepon(mascotaJugador)
     extraerAtaques(mascotaJugador)
     iniciarMapa()
     
+}
+
+function seleccionarMokepon(mascotaJugador){
+    fetch("http://localhost:8080/mokepon/" + jugadorId,{
+        method:"post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            mokepon: mascotaJugador
+        })
+    
+    })
 }
 
 function extraerAtaques (mascotaJugador) {
@@ -372,6 +404,7 @@ function pintarCanvas(){
     hipodogeEnemigo.pintarMokepon()
     capipepoEnemigo.pintarMokepon()
     ratigueyaEnemigo.pintarMokepon()
+    enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
 
     if(mascotaJugadorObjeto.velocidadX !== 0 || mascotaJugadorObjeto.velocidadY !== 0){
         revisarColision(hipodogeEnemigo)
@@ -380,6 +413,21 @@ function pintarCanvas(){
 
     }
 }
+
+function enviarPosicion(x,y){
+fetch("http://localhost:8080/mokepon/" + jugadorId + "posicion/",{
+        method:"post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            x,
+            y
+        })
+    })
+}
+
+
 function moverDerecha() {
     mascotaJugadorObjeto.velocidadX = 6
 }
