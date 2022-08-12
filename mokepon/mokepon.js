@@ -271,6 +271,22 @@ function enviarAtaques(){
             ataques: ataqueJugador
         })
     })
+    intervalo = setInterval(obtenerAtaques, 50)
+}
+
+function obtenerAtaques(){
+    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataques`)
+    .then(function(res){
+        if(res.ok){
+            res.json()
+                .then(function ({ataques}){
+                    if(ataques.length===5) {
+                        ataqueEnemigo=ataques
+                        combate()
+                    }
+                })
+        }
+    })
 }
 
 function seleccionarMascotaEnemigo(enemigo) {
@@ -308,6 +324,7 @@ function indexAmbosOponentes(jugador, enemigo) {
     }
     
 function combate(){
+    clearInterval(intervalo)
 
 for (let index = 0; index < ataqueJugador.length; index++){
 
@@ -426,10 +443,9 @@ fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`,{
         if(res.ok){
             res.json()
             .then(function({enemigos}){
-                console.log(enemigos)
                 mokeponesEnemigos = enemigos.map(function(enemigo) {
                     let mokeponEnemigo = null
-                    const mokeponNombre = enemigo.mokepon.nombre || ""
+                    const mokeponNombre = enemigo.mokepon.nombre
                     if(mokeponNombre === 'Hipodoge'){
                         mokeponEnemigo = new Mokepon('Hipodoge', '/mokepon/images/mokepons_mokepon_hipodoge_attack.png', 5, '/mokepon/images/hipodoge.png', enemigo.id)
                     } else if(mokeponNombre === 'Capipepo') {
